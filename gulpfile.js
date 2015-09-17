@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify'),
+	compress = require('gulp-yuicompressor'),
 	util = require('gulp-util'),
 	jshint = require('gulp-jshint'),
 	size = require('gulp-size'),
@@ -40,7 +40,7 @@ gulp.task('build', function(){
 		.pipe(concat('Chart.js'))
 		.pipe(replace('{{ version }}', package.version))
 		.pipe(gulp.dest(outputDir))
-		.pipe(uglify({preserveComments:'some'}))
+		.pipe(compress({preserveComments:'some', type:'js'}))
 		.pipe(concat('Chart.min.js'))
 		.pipe(gulp.dest(outputDir));
 
@@ -105,7 +105,7 @@ gulp.task('library-size', function(){
 
 gulp.task('module-sizes', function(){
 	return gulp.src(srcDir + '*.js')
-	.pipe(uglify({preserveComments:'some'}))
+	.pipe(compress({preserveComments:'some', type:'js'}))
 	.pipe(size({
 		showFiles: true,
 		gzip: true

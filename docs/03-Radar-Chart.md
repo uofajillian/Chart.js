@@ -85,6 +85,9 @@ These are the customisation options specific to Radar charts. These options are 
 	//Number - Point label font size in pixels
 	pointLabelFontSize : 10,
 
+	//Number - Point label line height in pixels
+	pointLabelLineHeight : 11,
+
 	//String - Point label font colour
 	pointLabelFontColor : "#666",
 

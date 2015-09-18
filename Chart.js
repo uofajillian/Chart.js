@@ -2097,8 +2097,10 @@
 						}
 
 						var sepLabels = this.labels[i].split(this.pointLabelDelimiter);
+						var labelLineHeight = this.pointLabelLineHeight && (this.pointLabelLineHeight > this.fontSize) 
+                                ? this.pointLabelLineHeight : this.fontSize;
 						for(var l=0;l<sepLabels.length;l++) {
-							ctx.fillText(sepLabels[l], pointLabelPosition.x, pointLabelPosition.y + (l*this.fontSize));
+							ctx.fillText(sepLabels[l], pointLabelPosition.x, pointLabelPosition.y + (l*labelLineHeight));
 						}
 					}
 				}
@@ -3398,6 +3400,9 @@
 			//Number - Point label font size in pixels
 			pointLabelFontSize : 10,
 
+			//Number - Point label line height in pixels
+			pointLabelLineHeight : 11,
+
 			//String - Point label font colour
 			pointLabelFontColor : "#666",
 
@@ -3547,6 +3552,7 @@
 				pointLabelFontFamily : this.options.pointLabelFontFamily,
 				pointLabelFontStyle : this.options.pointLabelFontStyle,
 				pointLabelDelimiter: this.options.pointLabelDelimiter,
+				pointLabelLineHeight : this.options.pointLabelLineHeight,
 				height : this.chart.height,
 				width: this.chart.width,
 				xCenter: this.chart.width/2,
